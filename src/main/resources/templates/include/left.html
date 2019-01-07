@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html>
+<nav th:fragment="left" class="navbar-default navbar-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav" id="main-menu">
+            <li><a id="overview" th:href="@{'/console/overViewPage'}"><i class="fa fa-dashboard"></i>总览</a></li>
+            <li><a id="patient" th:href="@{'/console/patientListPage'}"><i class="fa fa-dashboard"></i>病人管理</a></li>
+        </ul>
+    </div>
+</nav>
+</html>

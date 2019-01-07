@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yoler.raisinsconsole.dao.mapper.UserFavouriteMapper">
+    <resultMap id="BaseResultMap" type="com.yoler.raisinsconsole.entity.UserFavourite">
+        <result column="user_id" jdbcType="INTEGER" property="userId"/>
+        <result column="patient_info_id" jdbcType="INTEGER" property="patientInfoId"/>
+        <result column="patient_condition_id" jdbcType="INTEGER" property="patientConditionId"/>
+        <result column="delete_flag" jdbcType="INTEGER" property="deleteFalg"/>
+        <result column="create_time" jdbcType="DATE" property="createTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        user_id, patient_info_id, patient_condition_id, delete_flag, create_time
+    </sql>
+
+</mapper>

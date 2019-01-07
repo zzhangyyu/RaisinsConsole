@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yoler.raisinsconsole.dao.mapper.PatientConditionMapper">
+    <resultMap id="BaseResultMap" type="com.yoler.raisinsconsole.entity.PatientCondition">
+        <id column="ID" jdbcType="INTEGER" property="id"/>
+        <result column="patient_info_id" jdbcType="INTEGER" property="patientInfoId"/>
+        <result column="visiting_date" jdbcType="DATE" property="visitingDate"/>
+        <result column="pulse" jdbcType="VARCHAR" property="pulse"/>
+        <result column="tongue" jdbcType="VARCHAR" property="tongue"/>
+        <result column="add_condition" jdbcType="VARCHAR" property="addCondition"/>
+        <result column="analysis" jdbcType="VARCHAR" property="analysis"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        ID,patient_info_id,visiting_date,pulse,tongue,add_condition,analysis
+    </sql>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.yoler.raisinsconsole.entity.PatientCondition">
+		insert into Patient_Condition
+		  (patient_info_id, visiting_date, pulse,tongue, add_condition,analysis)
+		values (#{patientInfoId,jdbcType=INTEGER},
+		         #{visitingDate,jdbcType=DATE},
+		         #{pulse,jdbcType=VARCHAR},
+		         #{tongue,jdbcType=VARCHAR},
+		         #{addCondition,jdbcType=VARCHAR},
+		         #{analysis,jdbcType=VARCHAR})
+	</insert>
+
+    <resultMap id="PatientBriefInfoResult" type="com.yoler.raisinsconsole.vo.PatientBriefInfoVo">
+        <result column="patient_info_id" jdbcType="VARCHAR" property="patientInfoId"/>
+        <result column="patient_name" jdbcType="VARCHAR" property="patientName"/>
+        <result column="patient_sex" jdbcType="VARCHAR" property="patientSex"/>
+        <result column="patient_age" jdbcType="VARCHAR" property="patientAge"/>
+        <result column="last_visiting_date" jdbcType="VARCHAR" property="lastVisitingDate"/>
+        <result column="consilia_cnt" jdbcType="VARCHAR" property="consiliaCnt"/>
+    </resultMap>
+
+    <resultMap id="MounthDatasResult" type="com.yoler.raisinsconsole.vo.MounthDatasVo">
+        <result column="visiting_date" jdbcType="VARCHAR" property="visitingDate"/>
+        <result column="patient_cnt" jdbcType="VARCHAR" property="patientCnt"/>
+    </resultMap>
+
+    <select id="getPatientBriefInfo" parameterType="java.util.Map" resultMap="PatientBriefInfoResult">
+        SELECT
+          t.patient_info_id,
+          s.name               patient_name,
+          s.sex                patient_sex,
+          s.age                patient_age,
+          max(t.visiting_date) last_visiting_date,
+          count(t.id)          consilia_cnt
+        FROM Patient_Info s, Patient_Condition t
+        WHERE s.id = t.patient_info_id
+        GROUP BY t.patient_info_id, s.name, s.sex, s.age
+        LIMIT #{offset},#{recordPerPage}
+    </select>
+
+    <select id="getMounthDatas" parameterType="java.util.Map" resultMap="MounthDatasResult">
+        select
+          temp.visiting_date,
+          count(visiting_date) patient_cnt
+        from (
+               select DATE_FORMAT(t.visiting_date, '%Y-%m-%d') visiting_date
+               from Patient_Condition t
+             ) temp
+        group by temp.visiting_date
+    </select>
+
+</mapper>

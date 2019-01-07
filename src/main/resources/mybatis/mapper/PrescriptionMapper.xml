@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yoler.raisinsconsole.dao.mapper.PrescriptionMapper">
+    <resultMap id="BaseResultMap" type="com.yoler.raisinsconsole.entity.Prescription">
+        <id column="ID" jdbcType="INTEGER" property="id"/>
+        <result column="patient_condition_id" jdbcType="INTEGER" property="patientConditionId"/>
+        <result column="doctor_id" jdbcType="INTEGER" property="doctorId"/>
+        <result column="prescription_name" jdbcType="VARCHAR" property="prescriptionName"/>
+        <result column="prescription_detail" jdbcType="VARCHAR" property="prescriptionDetail"/>
+        <result column="prescription_method" jdbcType="VARCHAR" property="prescriptionMethod"/>
+        <result column="prescription_duration" jdbcType="VARCHAR" property="prescriptionDuration"/>
+        <result column="advice" jdbcType="VARCHAR" property="advice"/>
+        <result column="zhao_sir_say" jdbcType="VARCHAR" property="zhaoSirSay"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        ID,patient_condition_id,doctor_id,prescription_name,prescription_detail,prescription_method,prescription_duration,advice,zhao_sir_say
+    </sql>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.yoler.raisinsconsole.entity.Prescription">
+		insert into Prescription
+		  (patient_condition_id,doctor_id,prescription_name,prescription_detail,prescription_method,prescription_duration,advice,zhao_sir_say)
+		values (#{patientConditionId,jdbcType=INTEGER},
+		         #{doctorId,jdbcType=INTEGER},
+		         #{prescriptionName,jdbcType=VARCHAR},
+		         #{prescriptionDetail,jdbcType=VARCHAR},
+		         #{prescriptionMethod,jdbcType=VARCHAR},
+		         #{prescriptionDuration,jdbcType=VARCHAR},
+		         #{advice,jdbcType=VARCHAR},
+		         #{zhaoSirSay,jdbcType=VARCHAR})
+	</insert>
+
+</mapper>

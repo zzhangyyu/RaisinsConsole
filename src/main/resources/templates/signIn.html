@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Grape管理平台</title>
-    <link rel="shortcut icon" th:href="@{../static/ico/favicon.png}">
+    <link rel="shortcut icon" type="image/png" th:href="@{/ico/favicon.png}"/>
     <!--CSS-->
-    <link rel="stylesheet" th:href="@{../static/bootstrap/css/bootstrap.min.css}">
-    <link rel="stylesheet" th:href="@{../static/font-awesome/css/font-awesome.min.css}">
-    <link rel="stylesheet" th:href="@{../static/custom/css/form-elements.css}">
-    <link rel="stylesheet" th:href="@{../static/custom/css/signInPage.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/static/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/font-awesome/css/font-awesome.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/custom/css/form-elements.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/custom/css/signInPage.css}"/>
     <!--JS-->
-    <script th:src="@{../static/jquery/jquery-3.3.1.min.js}"></script>
-    <script th:src="@{../static/jquery/jquery.backstretch.min.js}"></script>
-    <script th:src="@{../static/bootstrap/js/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/jquery/jquery-3.3.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/jquery/jquery.backstretch.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/bootstrap/js/bootstrap.min.js}"></script>
 </head>
 
 <body>
@@ -30,15 +30,14 @@
                 <div class="col-sm-6 col-sm-offset-3 form-box">
                     <div class="form-top">
                         <div class="form-top-left">
-                            <h3>Login to our site</h3>
-                            <p>Enter your username and password to log on:</p>
+                            <p>请输入用户名和密码:</p>
                         </div>
                         <div class="form-top-right">
                             <i class="fa fa-key"></i>
                         </div>
                     </div>
                     <div class="form-bottom">
-                        <form th:action="@{'/welcomePage'}" onsubmit="return checkSignIn()" method="post" tclass="login-form">
+                        <form th:action="@{'/console/welcomePage'}" onsubmit="return checkSignIn()" method="post" tclass="login-form">
                             <div class="form-group">
                                 <label class="sr-only" for="form-username">Username</label>
                                 <input type="text" name="userName" placeholder="请输入用户名..." class="form-control"
@@ -61,7 +60,7 @@
 
 <script>
     $(function () {
-        $.backstretch("../static/img/homePageBg.jpg"); //背景
+        $.backstretch("/raisinsconsole/static/img/homePageBg.jpg"); //背景
     });
     function checkSignIn() {
         var username = document.getElementById("form-username");

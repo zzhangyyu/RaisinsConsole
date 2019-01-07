@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Grape管理平台</title>
+    <link rel="shortcut icon" th:href="@{/static/ico/favicon.png}">
+
+    <%--=========================================CSS=========================================--%>
+    <%--第三方插件--%>
+    <link rel="stylesheet" th:href="@{/static/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/static/font-awesome/css/font-awesome.min.css}">
+    <%--自定义--%>
+    <link rel="stylesheet" th:href="@{/static/custom/css/common-styles.css}">
+    <%--=========================================JS=========================================--%>
+    <%--第三方插件--%>
+    <script type="text/javascript" th:src="@{/static/jquery/jquery-3.3.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/bootstrap/js/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/echarts/echarts.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/metisMenu/js/metisMenu.min.js}"></script>
+    <%--自定义--%>
+    <script type="text/javascript" th:src="@{/static/custom/js/change-style.js}"></script>
+    <script type="text/javascript" th:src="@{/static/custom/js/grape-charts.js}"></script>
+</head>
+
+<div th:replace="include/top::top"> </div>
+<div th:replace="include/left::left"> </div>
+
+<body>
+
+<div id="page-wrapper">
+    <div class="header">
+        <h1 class="page-header">
+            <small>欢迎Admin</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">总览</a></li>
+            <li class="active">Data</li>
+        </ol>
+    </div>
+    <div id="page-inner">
+        <div class="row">
+            <div class="col-xs-6 col-md-4">
+                <div class="panel panel-default">
+                    <div id="mounthDatasChart" class="panel-body easypiechart-panel" style="height:400px;">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <input type="hidden" id="errorMsg" value="${errorMsg}"/>
+</div>
+
+<script>
+    $(function () {
+        // var mounthDatasUrl = '<%=path %>/console/getMounthDatas';
+        // showMounthDatas(mounthDatasUrl);
+        changeActiveMenu("overview");
+    });
+</script>
+</body>
+</html>

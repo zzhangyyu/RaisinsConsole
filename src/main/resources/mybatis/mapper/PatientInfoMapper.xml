@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yoler.raisinsconsole.dao.mapper.PatientInfoMapper">
+    <resultMap id="BaseResultMap" type="com.yoler.raisinsconsole.entity.PatientInfo">
+        <id column="ID" jdbcType="INTEGER" property="id"/>
+        <result column="NAME" jdbcType="VARCHAR" property="name"/>
+        <result column="SEX" jdbcType="VARCHAR" property="sex"/>
+        <result column="AGE" jdbcType="INTEGER" property="age"/>
+        <result column="BIRTHDAY" jdbcType="VARCHAR" property="birthday"/>
+        <result column="ZODIAC" jdbcType="VARCHAR" property="zodiac"/>
+        <result column="INTRODUCER" jdbcType="VARCHAR" property="introducer"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        ID,NAME, SEX, AGE, BIRTHDAY, ZODIAC,INTRODUCER
+    </sql>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.yoler.raisinsconsole.entity.PatientInfo">
+		insert into Patient_Info
+		  (NAME, SEX, AGE,BIRTHDAY, ZODIAC,INTRODUCER)
+		values (#{name,jdbcType=VARCHAR},
+		         #{sex,jdbcType=VARCHAR},
+		         #{age,jdbcType=INTEGER},
+		         #{birthday,jdbcType=VARCHAR},
+		         #{zodiac,jdbcType=VARCHAR},
+		         #{introducer,jdbcType=VARCHAR})
+	</insert>
+
+    <select id="getPatientInfoByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM Patient_Info t
+        WHERE t.name = #{patientName}
+    </select>
+
+</mapper>

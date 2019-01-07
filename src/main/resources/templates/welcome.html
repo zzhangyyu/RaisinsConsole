@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Grape管理平台</title>
+    <link rel="shortcut icon" type="image/png" th:href="@{/ico/favicon.png}"/>
+
+    <!--========================================CSS=========================================-->
+    <!--第三方插件-->
+    <link rel="stylesheet" type="text/css" th:href="@{/static/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/font-awesome/css/font-awesome.min.css}"/>
+    <!--自定义-->
+    <link rel="stylesheet" type="text/css" th:href="@{/static/custom/css/common-styles.css}"/>
+
+</head>
+
+<div th:replace="include/top::top"> </div>
+<div th:replace="include/left::left"> </div>
+
+<body>
+<div id="page-wrapper">
+    <div class="header">
+        <h1 class="page-header">
+            <small>欢迎Admin</small>
+        </h1>
+    </div>
+</div>
+</body>
+</html>
