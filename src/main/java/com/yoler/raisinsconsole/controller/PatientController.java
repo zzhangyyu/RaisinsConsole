@@ -42,9 +42,8 @@ public class PatientController {
     }
 
     @RequestMapping(value = "importPatient", method = RequestMethod.POST)
-    public String importPatient(Model model, @RequestParam("patientInfoFile") MultipartFile patientInfoFile) {
-        CommonsMultipartFile file = (CommonsMultipartFile) patientInfoFile;
-        String fileName = file.getFileItem().getName();
+    public String importPatient(Model model, @RequestParam("patientInfoFile") MultipartFile file) {
+        String fileName = file.getOriginalFilename();
         String fileType = null;
         int fileTypeIndex = fileName.lastIndexOf(".");
         if (fileTypeIndex > 0) {

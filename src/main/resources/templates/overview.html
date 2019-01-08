@@ -7,19 +7,19 @@
     <title>Grape管理平台</title>
     <link rel="shortcut icon" th:href="@{/static/ico/favicon.png}">
 
-    <%--=========================================CSS=========================================--%>
-    <%--第三方插件--%>
+    <!--=========================================CSS=========================================-->
+    <!--第三方插件-->
     <link rel="stylesheet" th:href="@{/static/bootstrap/css/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{/static/font-awesome/css/font-awesome.min.css}">
-    <%--自定义--%>
+    <!--自定义-->
     <link rel="stylesheet" th:href="@{/static/custom/css/common-styles.css}">
-    <%--=========================================JS=========================================--%>
-    <%--第三方插件--%>
+    <!--=========================================JS=========================================-->
+    <!--第三方插件-->
     <script type="text/javascript" th:src="@{/static/jquery/jquery-3.3.1.min.js}"></script>
     <script type="text/javascript" th:src="@{/static/bootstrap/js/bootstrap.min.js}"></script>
     <script type="text/javascript" th:src="@{/static/echarts/echarts.min.js}"></script>
     <script type="text/javascript" th:src="@{/static/metisMenu/js/metisMenu.min.js}"></script>
-    <%--自定义--%>
+    <!--自定义-->
     <script type="text/javascript" th:src="@{/static/custom/js/change-style.js}"></script>
     <script type="text/javascript" th:src="@{/static/custom/js/grape-charts.js}"></script>
 </head>
@@ -32,12 +32,11 @@
 <div id="page-wrapper">
     <div class="header">
         <h1 class="page-header">
-            <small>欢迎Admin</small>
+            <small>欢迎，Admin</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#">Home</a></li>
+            <li><a href="#">首页</a></li>
             <li><a href="#">总览</a></li>
-            <li class="active">Data</li>
         </ol>
     </div>
     <div id="page-inner">
@@ -57,8 +56,8 @@
 
 <script>
     $(function () {
-        // var mounthDatasUrl = '<%=path %>/console/getMounthDatas';
-        // showMounthDatas(mounthDatasUrl);
+        var mounthDatasUrl = 'getMounthDatas';
+        showMounthDatas(mounthDatasUrl);
         changeActiveMenu("overview");
     });
 </script>

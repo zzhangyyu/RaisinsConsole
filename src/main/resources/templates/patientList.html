@@ -26,8 +26,10 @@
     <script type="text/javascript" th:src="@{/static/custom/js/change-style.js}"></script>
 
 </head>
+
 <div th:replace="include/top::top"></div>
 <div th:replace="include/left::left"></div>
+
 <body>
 <input type="hidden" name="browserPatientBriefInfoList" id="browserPatientBriefInfoList"
        value="${browserPatientBriefInfoList}"/>
@@ -35,12 +37,11 @@
 <div id="page-wrapper">
     <div class="header">
         <h1 class="page-header">
-            <small>欢迎Admin</small>
+            <small>欢迎，Admin</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#">Home</a></li>
+            <li><a href="#">首页</a></li>
             <li><a href="#">病人管理</a></li>
-            <li class="active">Data</li>
         </ol>
     </div>
     <div id="page-inner">
@@ -51,7 +52,7 @@
                     <input id="show-patient-info-file-name" class="input-large" type="text" style="height:25px;">
                     <label for="patient-info-file" class="btn btn-info">选择文件</label>
                     <input id="patient-info-file" name="patientInfoFile" type="file" style="display:none"/>
-                    <button id="saveBtn" class="btn btn-info">确定</button>
+                    <button id="saveBtn" class="btn btn-info">导入病历</button>
                 </div>
             </form>
             <div class="col-md-12">
@@ -64,23 +65,17 @@
                                     <th>序号</th>
                                     <th>病人姓名</th>
                                     <th>性别</th>
-                                    <th>年龄</th>
                                     <th>就诊次数</th>
                                     <th>上次就诊时间</th>
-                                    <th>操作</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    <tr th:each="browserPatientBriefInfo : ${browserPatientBriefInfoList}" class="odd gradeX">
-                                        <td id="${browserPatientBriefInfo.patientInfoId}">${status.index+1}</td>
-                                        <td>${browserPatientBriefInfo.patientName}</td>
-                                        <td>${browserPatientBriefInfo.patientSex}</td>
-                                        <td>${browserPatientBriefInfo.patientAge}</td>
-                                        <td>${browserPatientBriefInfo.consiliaCnt}</td>
-                                        <td>${browserPatientBriefInfo.lastVisitingDate}</td>
-                                        <td><a href="#"
-                                               onclick="javaScript:addPatient('${browserPatientBriefInfo.patientInfoId}','${browserPatientBriefInfo.patientName}','${browserPatientBriefInfo.patientSex}','${browserPatientBriefInfo.patientAge}')">新增</a>
-                                        </td>
+                                    <tr th:each="browserPatientBriefInfo,browserPatientBriefInfoStat : ${browserPatientBriefInfoList}" class="odd gradeX">
+                                        <td th:text="${browserPatientBriefInfoStat.count}"></td>
+                                        <td th:text="${browserPatientBriefInfo.patientName}"></td>
+                                        <td th:text="${browserPatientBriefInfo.patientSex}"></td>
+                                        <td th:text="${browserPatientBriefInfo.consiliaCnt}"></td>
+                                        <td th:text="${browserPatientBriefInfo.lastVisitingDate}"></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -111,6 +106,7 @@
                 lengthChange: false,
                 bAutoWidth: false,
                 pagingType: "full_numbers",
+                pageLength:20,
                 language: {
                     "sProcessing": "处理中...",
                     "sLengthMenu": "显示 _MENU_ 项结果",
@@ -138,15 +134,6 @@
             }
         );
     });
-
-    function addPatient(patientInfoId, patientName, patientSex, patientAge) {
-        $('#patientInfoId').val(patientInfoId);
-        $('#patientName').val(patientName);
-        $('#patientSex').val(patientSex);
-        $('#patientAge').val(patientAge);
-        $('#addPatientForm').submit();
-    }
-
 </script>
 
 </body>
