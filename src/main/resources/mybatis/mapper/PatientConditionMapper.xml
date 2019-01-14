@@ -7,21 +7,23 @@
         <result column="visiting_date" jdbcType="DATE" property="visitingDate"/>
         <result column="pulse" jdbcType="VARCHAR" property="pulse"/>
         <result column="tongue" jdbcType="VARCHAR" property="tongue"/>
+        <result column="illness" jdbcType="VARCHAR" property="illness"/>
         <result column="add_condition" jdbcType="VARCHAR" property="addCondition"/>
         <result column="analysis" jdbcType="VARCHAR" property="analysis"/>
     </resultMap>
     <sql id="Base_Column_List">
-        ID,patient_info_id,visiting_date,pulse,tongue,add_condition,analysis
+        ID,patient_info_id,visiting_date,pulse,tongue,illness,add_condition,analysis
     </sql>
 
     <insert id="insert" useGeneratedKeys="true" keyProperty="id"
             parameterType="com.yoler.raisinsconsole.entity.PatientCondition">
 		insert into Patient_Condition
-		  (patient_info_id, visiting_date, pulse,tongue, add_condition,analysis)
+		  (patient_info_id, visiting_date, pulse,tongue, illness,add_condition,analysis)
 		values (#{patientInfoId,jdbcType=INTEGER},
 		         #{visitingDate,jdbcType=DATE},
 		         #{pulse,jdbcType=VARCHAR},
 		         #{tongue,jdbcType=VARCHAR},
+		         #{illness,jdbcType=VARCHAR},
 		         #{addCondition,jdbcType=VARCHAR},
 		         #{analysis,jdbcType=VARCHAR})
 	</insert>

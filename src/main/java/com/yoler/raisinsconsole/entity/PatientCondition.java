@@ -11,6 +11,7 @@ public class PatientCondition {
     private Date visitingDate;
     private String pulse;
     private String tongue;
+    private String illness;
     private String addCondition;
     private String analysis;
 
@@ -52,6 +53,14 @@ public class PatientCondition {
 
     public void setTongue(String tongue) {
         this.tongue = tongue;
+    }
+
+    public String getIllness() {
+        return illness;
+    }
+
+    public void setIllness(String illness) {
+        this.illness = illness;
     }
 
     public String getAddCondition() {
